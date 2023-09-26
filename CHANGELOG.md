@@ -11,3 +11,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.2.0
+
+**Features**
+
+* Added `bsys::systemctl::daemon_reload` to reload systemd config
+
+**Bugfixes**
+
+**Known Issues**
