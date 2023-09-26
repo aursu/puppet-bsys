@@ -1,0 +1,43 @@
+{
+  "name": "aursu-bsys",
+  "version": "0.1.0",
+  "author": "aursu",
+  "summary": "Basic puppet resources",
+  "license": "Apache-2.0",
+  "source": "https://github.com/aursu/puppet-bsys",
+  "project_page": "https://github.com/aursu/puppet-bsys",
+  "issues_url": "https://github.com/aursu/puppet-bsys/issues",
+  "dependencies": [
+
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "Rocky",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "20.04",
+        "22.04"
+      ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 7.24 < 9.0.0"
+    }
+  ],
+  "pdk-version": "3.0.0",
+  "template-url": "pdk-default#3.0.0",
+  "template-ref": "tags/3.0.0-0-g056e50d"
+}
