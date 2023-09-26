@@ -6,6 +6,8 @@ All notable changes to this project will be documented in this file.
 
 **Features**
 
+* Added `bsys::repo` class to update Yum/Apt cache
+
 **Bugfixes**
 
 **Known Issues**
