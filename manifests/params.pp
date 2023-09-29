@@ -11,10 +11,13 @@ class bsys::params {
   $osfull = $facts['os']['release']['full']
 
   case $osname {
-    'Ubuntu': {
+    'Debian': {
       $oscode = $facts['os']['distro']['codename']
+
+      $certbase = '/etc/ssl/certs'
+      $keybase  = '/etc/ssl/private'
     }
-    'CentOS', 'Rocky': {
+    'RedHat': {
       if $osname == 'CentOS' {
         # Puppet > 6
         if 'distro' in $facts['os'] {
@@ -57,6 +60,9 @@ class bsys::params {
         $repo_os_name = 'Rocky Linux'
         $manage_dnf_module = true
       }
+
+      $certbase = '/etc/pki/tls/certs'
+      $keybase  = '/etc/pki/tls/private'
     }
   }
 }
