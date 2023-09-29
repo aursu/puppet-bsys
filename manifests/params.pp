@@ -14,6 +14,7 @@ class bsys::params {
     'Debian': {
       $oscode = $facts['os']['distro']['codename']
 
+      $pkibase = '/etc/ssl'
       $certbase = '/etc/ssl/certs'
       $keybase  = '/etc/ssl/private'
     }
@@ -61,8 +62,10 @@ class bsys::params {
         $manage_dnf_module = true
       }
 
+      $pkibase = '/etc/pki/tls'
       $certbase = '/etc/pki/tls/certs'
       $keybase  = '/etc/pki/tls/private'
     }
+    default: {}
   }
 }
