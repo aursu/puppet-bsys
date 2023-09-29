@@ -32,11 +32,12 @@ All notable changes to this project will be documented in this file.
 
 **Known Issues**
 
-## Release 0.4.0
+## Release 0.4.1
 
 **Features**
 
 * Added common parameters for Web servers
+* Added `pkibase` parameter
 
 **Bugfixes**
 
