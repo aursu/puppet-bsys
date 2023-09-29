@@ -10,7 +10,7 @@ class bsys::params {
   $osmaj  = $facts['os']['release']['major']
   $osfull = $facts['os']['release']['full']
 
-  case $osname {
+  case $osfam {
     'Debian': {
       $oscode = $facts['os']['distro']['codename']
 
