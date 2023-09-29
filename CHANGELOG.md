@@ -22,7 +22,7 @@ All notable changes to this project will be documented in this file.
 
 **Known Issues**
 
-## Release 0.3.0
+## Release 0.3.1
 
 **Features**
 

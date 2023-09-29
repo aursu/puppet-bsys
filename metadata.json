@@ -1,6 +1,6 @@
 {
   "name": "aursu-bsys",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": "aursu",
   "summary": "Basic puppet resources",
   "license": "Apache-2.0",
