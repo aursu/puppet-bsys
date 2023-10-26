@@ -42,3 +42,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.5.0
+
+**Features**
+
+* Added EPEL repository for RedHat based systems
+
+**Bugfixes**
+
+**Known Issues**
