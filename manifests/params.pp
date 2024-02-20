@@ -17,6 +17,8 @@ class bsys::params {
       $pkibase = '/etc/ssl'
       $certbase = '/etc/ssl/certs'
       $keybase  = '/etc/ssl/private'
+
+      $redhat = false
     }
     'RedHat': {
       case $osname {
@@ -64,16 +66,22 @@ class bsys::params {
       # whether system supports DNF modules management or not
       if $osmaj in ['6', '7'] {
         $manage_dnf_module = false
+        $package_provider = 'yum'
       }
       else {
         # it was introduced in RedHat Linux distros and derivatives since version 8
         $manage_dnf_module = true
+        $package_provider = 'dnf'
       }
 
       $pkibase = '/etc/pki/tls'
       $certbase = '/etc/pki/tls/certs'
       $keybase  = '/etc/pki/tls/private'
+
+      $redhat = true
     }
-    default: {}
+    default: {
+      $redhat = false
+    }
   }
 }
