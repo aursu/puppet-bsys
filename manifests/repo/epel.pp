@@ -4,8 +4,8 @@
 #
 # @example
 #   include bsys::repo::epel
-class bsys::repo::epel {
-  if $facts['os']['family'] == 'RedHat' {
+class bsys::repo::epel inherits bsys::params {
+  if $bsys::params::osfam == 'RedHat' {
     include bsys::repo
 
     package { 'epel-release':
