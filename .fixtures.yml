@@ -3,4 +3,7 @@
 ---
 fixtures:
   forge_modules:
-#     stdlib: "puppetlabs/stdlib"
+    mount_core:
+      repo: puppetlabs/mount_core
+    stdlib:
+      repo: puppetlabs/stdlib
