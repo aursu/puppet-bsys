@@ -52,3 +52,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.6.0
+
+**Features**
+
+* Added bsys::tools::package in order to use corporate repos
+
+**Bugfixes**
+
+**Known Issues**
