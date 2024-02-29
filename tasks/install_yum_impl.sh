@@ -108,7 +108,7 @@ case $platform in
     platform_version=$major_version
     ;;
   "Fedora")
-    platform_version=$major_version;;
+    platform_version=$major_version
     ;;
   "Amzn"|"Amazon Linux")
     case $platform_version in
