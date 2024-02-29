@@ -1,0 +1,19 @@
+{
+    "description": "Install the Yum package",
+    "parameters": {
+      "retry": {
+        "description": "The number of retries in case of network connectivity failures",
+        "type": "Optional[Integer]",
+        "default": 5
+      }
+    },
+    "implementations": [
+      {
+        "name": "install_yum_impl.sh",
+        "requirements": ["shell"],
+        "files": ["facts/tasks/bash.sh"],
+        "input_method": "environment"
+      }
+    ]
+  }
+  
