@@ -73,3 +73,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.6.2
+
+**Features**
+
+* Added Bolt task `bsys::install_yum` to install yum package on RedHat 8+
+
+**Bugfixes**
+
+**Known Issues**
