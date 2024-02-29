@@ -5,7 +5,7 @@
 # @example
 #   include bsys::tools::yum
 class bsys::tools::yum inherits bsys::params {
-  if $bsys::params::osfam == 'RedHat' and $bsys::params::manage_dnf_module {
+  if $bsys::params::redhat and $bsys::params::manage_dnf_module {
     package { 'yum':
       ensure   => 'installed',
       provider => 'dnf',
