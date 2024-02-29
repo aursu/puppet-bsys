@@ -52,3 +52,14 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.5.1
+
+**Features**
+
+* Added `bsys::tools::yum` to install yum package on RedHat 8+
+* Added Rocky Linux 9
+
+**Bugfixes**
+
+**Known Issues**

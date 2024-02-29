@@ -1,6 +1,6 @@
 {
   "name": "aursu-bsys",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "author": "aursu",
   "summary": "Basic puppet resources",
   "license": "Apache-2.0",
@@ -19,7 +19,8 @@
     {
       "operatingsystem": "Rocky",
       "operatingsystemrelease": [
-        "8"
+        "8",
+        "9"
       ]
     },
     {
