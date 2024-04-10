@@ -93,3 +93,14 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.7.0
+
+**Features**
+
+* Added class `bsys::timezone` to manage TimeZone settings on OS
+* Added Bsys::Unixpath type which allow only Unix like absolute paths
+
+**Bugfixes**
+
+**Known Issues**

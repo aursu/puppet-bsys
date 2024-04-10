@@ -10,6 +10,11 @@ class bsys::params {
   $osmaj  = $facts['os']['release']['major']
   $osfull = $facts['os']['release']['full']
 
+  # timezone settings looks identical for Debian/RedHat
+  $tz_data = 'tzdata'
+  $tz_directory = '/usr/share/zoneinfo'
+  $tz_local = '/etc/localtime'
+
   case $osfam {
     'Debian': {
       $oscode = $facts['os']['distro']['codename']
@@ -17,6 +22,8 @@ class bsys::params {
       $pkibase = '/etc/ssl'
       $certbase = '/etc/ssl/certs'
       $keybase  = '/etc/ssl/private'
+
+      $tz_info = '/etc/timezone'
 
       $redhat = false
     }
@@ -78,9 +85,12 @@ class bsys::params {
       $certbase = '/etc/pki/tls/certs'
       $keybase  = '/etc/pki/tls/private'
 
+      $tz_info = undef
+
       $redhat = true
     }
     default: {
+      $tz_info = undef
       $redhat = false
     }
   }
