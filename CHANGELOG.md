@@ -110,6 +110,7 @@ All notable changes to this project will be documented in this file.
 **Features**
 
 * Updated PostgreSQL to the latest version as of 1st July 2024
+* PDK upgrade
 
 **Bugfixes**
 
