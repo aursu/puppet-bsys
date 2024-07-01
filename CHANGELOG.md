@@ -104,3 +104,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.7.1
+
+**Features**
+
+* Updated PostgreSQL to the latest version as of 1st July 2024
+
+**Bugfixes**
+
+**Known Issues**
