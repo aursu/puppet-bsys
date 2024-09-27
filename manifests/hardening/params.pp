@@ -35,5 +35,8 @@ class bsys::hardening::params inherits bsys::params {
         default => '022',
       }
     }
+    default: {
+      fail("Operating system \"${bsys::params::osname}\" is not supported. Supported OSes are: Ubuntu, Rocky, and CentOS.")
+    }
   }
 }
