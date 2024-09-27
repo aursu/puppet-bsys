@@ -125,3 +125,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.8.0
+
+**Features**
+
+* Added /etc/login.defs management
+
+**Bugfixes**
+
+**Known Issues**
