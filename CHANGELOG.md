@@ -145,3 +145,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.10.0
+
+**Features**
+
+* Added more /etc/login.defs parameters
+
+**Bugfixes**
+
+**Known Issues**
