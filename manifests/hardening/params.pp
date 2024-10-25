@@ -39,4 +39,7 @@ class bsys::hardening::params inherits bsys::params {
       fail("Operating system \"${bsys::params::osname}\" is not supported. Supported OSes are: Ubuntu, Rocky, and CentOS.")
     }
   }
+
+  $uid_min = 1000
+  $gid_min = 1000
 }
