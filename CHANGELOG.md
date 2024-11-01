@@ -146,12 +146,13 @@ All notable changes to this project will be documented in this file.
 
 **Known Issues**
 
-## Release 0.10.1
+## Release 0.10.2
 
 **Features**
 
 * Added more /etc/login.defs parameters
 * Added PostgreSQL 17.0 to the latest version as of 1st November 2024
+* Added irqbalance daemon management
 
 **Bugfixes**
 
