@@ -157,14 +157,15 @@ UMASK <%= @umask %>
 #	PASS_MIN_DAYS	Minimum number of days allowed between password changes.
 #	PASS_WARN_AGE	Number of days warning given before a password expires.
 #
-PASS_MAX_DAYS	99999
-PASS_MIN_DAYS	0
-PASS_WARN_AGE	7
+PASS_MAX_DAYS <%= @pass_max_days %>
+PASS_MIN_DAYS <%= @pass_min_days %>
+PASS_MIN_LEN <%= @pass_min_len %>
+PASS_WARN_AGE <%= @pass_warn_age %>
 
 #
 # Min/max values for automatic uid selection in useradd
 #
-UID_MIN			 1000
+UID_MIN <%= @uid_min %>
 UID_MAX			60000
 # System accounts
 #SYS_UID_MIN		  100
@@ -173,7 +174,7 @@ UID_MAX			60000
 #
 # Min/max values for automatic gid selection in groupadd
 #
-GID_MIN			 1000
+GID_MIN <%= @gid_min %>
 GID_MAX			60000
 # System accounts
 #SYS_GID_MIN		  100

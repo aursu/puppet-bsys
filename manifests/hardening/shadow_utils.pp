@@ -13,11 +13,24 @@
 #   The path to the template file that defines the content of `/etc/login.defs`.
 #   This template contains secure configurations for login and password policies.
 #
+# @param pass_max_days
+# @param pass_min_days
+# @param pass_min_len
+# @param pass_warn_age
+# @param uid_min
+# @param gid_min
+#
 # @example
 #   include bsys::hardening::shadow_utils
 #
 class bsys::hardening::shadow_utils (
   String $umask = $bsys::hardening::params::umask,
+  Integer $pass_max_days = 180,
+  Integer $pass_min_days = 0,
+  Integer $pass_min_len = 8,
+  Integer $pass_warn_age = 14,
+  Integer $uid_min = $bsys::hardening::params::uid_min,
+  Integer $gid_min = $bsys::hardening::params::gid_min,
   String $login_defs_template = $bsys::hardening::params::login_defs_template,
 ) inherits bsys::hardening::params {
   file { '/etc/login.defs':
