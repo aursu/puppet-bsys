@@ -157,3 +157,15 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.11.0
+
+**Features**
+
+* Added Bolt task `bsys::apt_update`
+* Added Bolt plan `bsys::locale`
+* Added class `bsys::locale` to generate locale.
+
+**Bugfixes**
+
+**Known Issues**
