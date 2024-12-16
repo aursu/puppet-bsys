@@ -1,0 +1,18 @@
+{
+    "description": "Run apt-get update",
+    "parameters": {
+      "retry": {
+        "description": "The number of retries in case of network connectivity failures",
+        "type": "Optional[Integer]",
+        "default": 5
+      }
+    },
+    "implementations": [
+      {
+        "name": "apt_update_impl.sh",
+        "requirements": ["shell"],
+        "files": ["facts/tasks/bash.sh"],
+        "input_method": "environment"
+      }
+    ]
+  }

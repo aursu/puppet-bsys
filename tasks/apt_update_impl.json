@@ -1,0 +1,13 @@
+{
+  "description": "Run apt-get update command",
+  "private": true,
+  "input_method": "environment",
+  "parameters": {
+    "retry": {
+      "description": "The number of retries in case of network connectivity failures",
+      "type": "Optional[Integer]",
+      "default": 5
+    }
+  },
+  "files": ["facts/tasks/bash.sh"]
+}
