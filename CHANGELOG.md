@@ -169,3 +169,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.11.2
+
+**Features**
+
+* Added PostgreSQL 17.4 and other latest available version as of 27th March 2025
+
+**Bugfixes**
+
+**Known Issues**
