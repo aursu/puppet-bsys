@@ -179,3 +179,13 @@ All notable changes to this project will be documented in this file.
 **Bugfixes**
 
 **Known Issues**
+
+## Release 0.11.3
+
+**Features**
+
+* Added PostgreSQL latest available versions as of 12th June 2025
+
+**Bugfixes**
+
+**Known Issues**
