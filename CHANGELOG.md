@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.11.4
+
+**Features**
+
+* Updated PostgreSQL version type to support latest available versions as of August 14, 2025
+* Added support for PostgreSQL 17.6, 16.10, 15.14, 14.19, 13.22
+
+**Bugfixes**
+
+**Known Issues**
+
 ## Release 0.1.0
 
 **Features**
