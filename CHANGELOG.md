@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.11.5
+
+**Features**
+
+* Updated PostgreSQL version type to support latest available versions as of February 16, 2026
+* Added support for PostgreSQL 18.2, 17.8, 16.12, 15.16, 14.21, 13.23
+
+**Bugfixes**
+
+**Known Issues**
+
 ## Release 0.11.4
 
 **Features**
