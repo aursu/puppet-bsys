@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.11.6
+
+**Features**
+
+* Added `bsys::copy_fail` class for immediate mitigation of CVE-2026-31431 by blacklisting and unloading the `algif_aead` kernel module
+
+**Bugfixes**
+
+**Known Issues**
+
 ## Release 0.11.5
 
 **Features**
