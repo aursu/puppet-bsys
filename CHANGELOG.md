@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.11.7
+
+**Features**
+
+* Updated PostgreSQL version type to support latest available versions as of August 13, 2026
+* Added support for PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24
+
+**Bugfixes**
+
+**Known Issues**
+
+* PostgreSQL 13 is no longer accepted by `Bsys::PGVersion` (upstream end-of-life on November 13, 2025)
+
 ## Release 0.11.6
 
 **Features**
