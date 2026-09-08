@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.12.0
+
+**Features**
+
+* New function **`bsys::is_private_ip($address, $include_loopback = false)`** - whether an address is in private, non-routable space. Written for deciding what a service may bind to or be reached on. Ranges are compared with Ruby's `IPAddr` rather than string prefixes, because prefix matching gets `172.16.0.0/12` wrong: a check for `172.` also accepts `172.0`-`172.15` and `172.32`-`172.255`, which are public address space. Covers RFC 1918 for IPv4 and RFC 4193 unique local addresses (`fc00::/7`) for IPv6. Loopback is opt-in via the second argument - it is private in the sense of unreachable, but a service told to bind it is usually a mistake, so a caller that means it has to say so. Deliberately **not** treated as private: `169.254.0.0/16` and `fe80::/10` (link-local, which is what you get when DHCP failed) and `100.64.0.0/10` (RFC 6598 carrier NAT, the provider's space rather than yours). An address that cannot be parsed raises rather than returning false, because answering "not private" for a typo would let it through the very check meant to catch it.
+
 ## Release 0.11.7
 
 **Features**
