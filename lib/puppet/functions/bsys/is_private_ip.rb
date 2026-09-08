@@ -28,23 +28,32 @@ Puppet::Functions.create_function(:'bsys::is_private_ip') do
     return_type 'Boolean'
   end
 
+  # Memoised methods rather than constants: a constant declared in the body of
+  # Puppet::Functions.create_function is defined on the loader's own namespace,
+  # so loading the function more than once in a process warns "already
+  # initialized constant" on every reload.
+  #
   # RFC 1918 for IPv4 and RFC 4193 unique local addresses for IPv6.
   #
   # Deliberately excluded, because neither is a sane thing to serve on and
   # treating them as private invites exactly that: 169.254.0.0/16 and fe80::/10
   # (link-local, present when DHCP failed) and 100.64.0.0/10 (RFC 6598 carrier
   # NAT, which is the provider's space, not ours).
-  PRIVATE_RANGES = [
-    '10.0.0.0/8',
-    '172.16.0.0/12',
-    '192.168.0.0/16',
-    'fc00::/7',
-  ].map { |range| IPAddr.new(range) }.freeze
+  def private_ranges
+    @private_ranges ||= [
+      '10.0.0.0/8',
+      '172.16.0.0/12',
+      '192.168.0.0/16',
+      'fc00::/7',
+    ].map { |range| IPAddr.new(range) }.freeze
+  end
 
-  LOOPBACK_RANGES = [
-    '127.0.0.0/8',
-    '::1/128',
-  ].map { |range| IPAddr.new(range) }.freeze
+  def loopback_ranges
+    @loopback_ranges ||= [
+      '127.0.0.0/8',
+      '::1/128',
+    ].map { |range| IPAddr.new(range) }.freeze
+  end
 
   def is_private(address, include_loopback = false)
     begin
@@ -56,7 +65,7 @@ Puppet::Functions.create_function(:'bsys::is_private_ip') do
       raise Puppet::ParseError, "bsys::is_private_ip: #{address.inspect} is not a valid IP address (#{e.message})"
     end
 
-    ranges = include_loopback ? PRIVATE_RANGES + LOOPBACK_RANGES : PRIVATE_RANGES
+    ranges = include_loopback ? private_ranges + loopback_ranges : private_ranges
 
     ranges.any? { |range| range.include?(addr) }
   end

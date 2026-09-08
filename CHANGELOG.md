@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.12.1
+
+**Bugfixes**
+
+* `bsys::is_private_ip` holds its address ranges in memoised methods rather than constants. A constant declared in the body of `Puppet::Functions.create_function` is defined on the loader's own namespace, so every reload of the function warned `already initialized constant` - noise in the log of every Puppet run, which is how warnings that matter come to be ignored.
+
 ## Release 0.12.0
 
 **Features**
