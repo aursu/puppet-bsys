@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.13.0
+
+**Features**
+
+* **`bsys::is_virtual_iface($name)`** - whether an interface name is a virtual device: container and VM bridges, veth pairs, tunnels, overlay and mesh devices. Recognised by name rather than by address, because a Docker bridge holds a genuine RFC 1918 address and no range check can tell it from the LAN. `bond*` and `team*` are deliberately **not** virtual - they are real aggregated links a service may be served on - and the patterns are anchored, so a NIC unluckily named `brain0` is not mistaken for a bridge.
+* **`bsys::internal_ip($networking, $include_loopback = false)`** - the address a service on this host should be reachable on, or `undef`. Prefers the primary address (the interface carrying the default route) when it is private; otherwise the first private address on a non-virtual interface, in interface-name order for stability; otherwise `undef`, leaving the caller to fail or ask rather than binding something arbitrary.
+
+Written as functions because expressing the selection in the Puppet language means chained filter/map blocks over a nested hash - hard to read, harder to test. The failure they prevent is concrete: on a Docker host `br-*` and `docker0` sort before `eno2`, so ordering alone picks a container bridge, and a Puppet Server published on `172.20.0.1` is unreachable to every agent.
+
 ## Release 0.12.1
 
 **Bugfixes**
