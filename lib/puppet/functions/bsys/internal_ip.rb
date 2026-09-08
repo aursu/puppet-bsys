@@ -52,13 +52,17 @@ Puppet::Functions.create_function(:'bsys::internal_ip') do
     interfaces = networking['interfaces']
     return nil unless interfaces.is_a?(Hash)
 
-    name = interfaces.keys.sort.find do |iface|
-      next false if virtual?(iface)
+    # Enumerable#sort on a Hash yields an array of [key, value] pairs sorted by key.
+    # Enumerable#find short-circuits, returning the first pair that matches the block.
+    match = interfaces.sort.find do |name, data|
+      next false if virtual?(name)
+      next false unless data.is_a?(Hash)
 
-      address = interfaces[iface].is_a?(Hash) ? interfaces[iface]['ip'] : nil
+      address = data['ip']
       address && private?(address, include_loopback)
     end
 
-    name ? interfaces[name]['ip'].to_s : nil
+    # match is nil if nothing was found, otherwise it is [name, data]
+    match ? match[1]['ip'].to_s : nil
   end
 end

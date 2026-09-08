@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.13.1
+
+**Bugfixes**
+
+* `bsys::is_virtual_iface` uses a single extended regular expression rather than iterating an array of patterns, and drops a redundant `virbr\d+-nic` alternative already covered by the `virbr` prefix.
+* `bsys::is_private_ip` short-circuits instead of concatenating the range lists, which allocated a new Array on every call made with `include_loopback`.
+* `bsys::internal_ip` iterates sorted `[name, data]` pairs, so the chosen interface is not looked up in the hash a second time.
+* Internal predicate methods renamed to `private?` / `virtual?` for `Naming/PredicateName`. The Puppet-visible function names are unchanged.
+
 ## Release 0.13.0
 
 **Features**

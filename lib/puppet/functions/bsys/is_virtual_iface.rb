@@ -17,37 +17,41 @@ Puppet::Functions.create_function(:'bsys::is_virtual_iface') do
   #   bsys::is_virtual_iface('lo')        # => true
   #   bsys::is_virtual_iface('eno2')      # => false
   #   bsys::is_virtual_iface('bond0')     # => false, a real aggregate
-  dispatch :is_virtual do
+  dispatch :virtual? do
     param 'String[1]', :name
     return_type 'Boolean'
   end
 
-  # Memoised rather than a constant: a constant declared in the body of
-  # Puppet::Functions.create_function is defined on the loader's namespace and
-  # warns "already initialized constant" on every reload.
+  # Memoized to avoid "already initialized constant" warnings during environment
+  # reloads. Uses a single extended regular expression for optimal performance.
   #
   # Note what is absent. `bond*` and `team*` are real aggregated links and a
   # service may legitimately be served on them. `eth*`, `en*` and `wl*` are
   # physical. Only devices that exist to carry traffic for something else are
   # listed here.
-  def virtual_patterns
-    @virtual_patterns ||= [
-      %r{\Alo\z},           # loopback
-      %r{\Adocker},         # docker0 and friends
-      %r{\Abr-},            # docker/podman user-defined bridges
-      %r{\Avirbr},          # libvirt
-      %r{\Avnet\d},         # libvirt guest taps
-      %r{\Aveth},           # container side of a veth pair
-      %r{\A(tun|tap)\d},    # tunnels and taps
-      %r{\Avxlan},          # overlay
-      %r{\A(cni|flannel|cali|weave|kube)},  # kubernetes networking
-      %r{\Adummy},
-      %r{\A(wg|tailscale|zt)\d*\z},         # wireguard, tailscale, zerotier
-      %r{\Avirbr\d+-nic\z},
-    ].freeze
+  #
+  # /x ignores literal whitespace, so any future alternative needing a space
+  # must escape it.
+  def virtual_pattern
+    @virtual_pattern ||= %r{
+      \A                                # Anchor to start of string
+      (?:
+        lo\z                            | # loopback
+        docker                          | # docker0 and friends
+        br-                             | # docker/podman user-defined bridges
+        virbr                           | # libvirt (also covers virbrX-nic)
+        vnet\d                          | # libvirt guest taps
+        veth                            | # container side of a veth pair
+        (?:tun|tap)\d                   | # tunnels and taps
+        vxlan                           | # overlay
+        (?:cni|flannel|cali|weave|kube) | # kubernetes networking
+        dummy                           | # dummy interfaces
+        (?:wg|tailscale|zt)\d*\z          # wireguard, tailscale, zerotier
+      )
+    }x.freeze
   end
 
-  def is_virtual(name)
-    virtual_patterns.any? { |pattern| name.match?(pattern) }
+  def virtual?(name)
+    virtual_pattern.match?(name)
   end
 end

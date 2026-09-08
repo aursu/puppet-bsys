@@ -22,7 +22,7 @@ Puppet::Functions.create_function(:'bsys::is_private_ip') do
   # @example Loopback is opt-in
   #   bsys::is_private_ip('127.0.0.1')        # => false
   #   bsys::is_private_ip('127.0.0.1', true)  # => true
-  dispatch :is_private do
+  dispatch :private? do
     param 'String[1]', :address
     optional_param 'Boolean', :include_loopback
     return_type 'Boolean'
@@ -55,7 +55,7 @@ Puppet::Functions.create_function(:'bsys::is_private_ip') do
     ].map { |range| IPAddr.new(range) }.freeze
   end
 
-  def is_private(address, include_loopback = false)
+  def private?(address, include_loopback = false)
     begin
       addr = IPAddr.new(address)
     rescue IPAddr::Error => e
@@ -65,8 +65,11 @@ Puppet::Functions.create_function(:'bsys::is_private_ip') do
       raise Puppet::ParseError, "bsys::is_private_ip: #{address.inspect} is not a valid IP address (#{e.message})"
     end
 
-    ranges = include_loopback ? private_ranges + loopback_ranges : private_ranges
+    # Short-circuit rather than concatenating: `private_ranges + loopback_ranges`
+    # allocates a new Array on every call.
+    return true if private_ranges.any? { |range| range.include?(addr) }
+    return true if include_loopback && loopback_ranges.any? { |range| range.include?(addr) }
 
-    ranges.any? { |range| range.include?(addr) }
+    false
   end
 end
