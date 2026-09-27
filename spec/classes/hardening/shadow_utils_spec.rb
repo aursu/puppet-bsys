@@ -21,6 +21,17 @@ describe 'bsys::hardening::shadow_utils' do
             .with_content(%r{UMASK 022})
         }
       end
+
+      # Rocky 10's own file, so its defaults survive: yescrypt, the EL10
+      # subordinate id range, and the password policy lines taken from here.
+      if os.start_with?('rocky-10')
+        it {
+          is_expected.to contain_file('/etc/login.defs')
+            .with_content(%r{^ENCRYPT_METHOD YESCRYPT$})
+            .with_content(%r{^SUB_UID_MIN\s+524288$})
+            .with_content(%r{^PASS_MAX_DAYS 180$})
+        }
+      end
     end
   end
 end

@@ -19,7 +19,8 @@ class bsys::hardening::params inherits bsys::params {
     'Rocky': {
       $login_defs_template = $osmaj ? {
         '8'     => 'bsys/shadow_utils/login.defs.RL8.erb',
-        default => 'bsys/shadow_utils/login.defs.RL9.erb',
+        '9'     => 'bsys/shadow_utils/login.defs.RL9.erb',
+        default => 'bsys/shadow_utils/login.defs.RL10.erb',
       }
 
       $umask = '022'
