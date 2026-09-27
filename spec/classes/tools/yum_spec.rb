@@ -9,7 +9,7 @@ describe 'bsys::tools::yum' do
 
       it { is_expected.to compile.with_all_deps }
 
-      if os_facts[:os]['family'] == 'RedHat' && ['8', '9'].include?(os_facts[:os]['release']['major'])
+      if os_facts[:os]['family'] == 'RedHat' && os_facts[:os]['release']['major'].to_i >= 8
         it {
           is_expected.to contain_package('yum')
             .with_ensure('installed')
