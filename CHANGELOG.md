@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.14.0
+
+**Features**
+
+* **Rocky 10 is declared and tested.** `metadata.json` lists Rocky 10, and the
+  unit tests run on a real rocky-10 factset: PDK template 3.2.0 -> 3.4.0, with
+  `.sync.yml` raising `facterdb` to `~> 4.5` and `rspec-puppet-facts` to `~> 6.0`,
+  because the template's facterdb 2.1 carries no rocky-10 facts.
+
+**Bugfixes**
+
+* **Rocky 10 gets its own `login.defs`.** Every Rocky release after 8 took
+  `login.defs.RL9.erb`, so on Rocky 10 `bsys::hardening::shadow_utils` replaced the
+  distribution's file with EL9's. That silently turned `ENCRYPT_METHOD YESCRYPT`
+  into `SHA512`, moved `SUB_UID_MIN`/`SUB_GID_MIN` from `524288` to `100000`, and
+  dropped `PASS_ALWAYS_WARN` and `PASS_CHANGE_TRIES`. `login.defs.RL10.erb` is
+  Rocky 10's shipped file with the same seven directives templated as in RL9, and
+  release 9 now names RL9 explicitly.
+
+**Notes**
+
+* ⚠ **On Rocky 10 nodes `/etc/login.defs` changes** on the first run with this
+  release: the lines above return to Rocky 10's values. New local passwords are
+  hashed with yescrypt; existing hashes are untouched. Nothing changes on Rocky
+  8/9, Ubuntu or CentOS.
+* CentOS 7 stays declared: nodes still run it. facterdb 4.x has no centos-7
+  factset, so the EL7 examples no longer run.
+* The `bsys::tools::yum` spec expected no `Package[yum]` outside RedHat 8/9; the
+  code has always installed it on 8 and later, and Rocky 10 ships it as dnf's
+  compatibility package. The test was corrected, not the code.
+
 ## Release 0.13.1
 
 **Bugfixes**
