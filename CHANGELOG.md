@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
+## Release 0.14.1
+
+**Bugfixes**
+
+* `Bsys::PGVersion` covers the PostgreSQL releases of November 13, 2026: 18.7,
+  17.12, 16.16, 15.20 and 14.25. 18.7 was rejected before (the 18 branch ended
+  at 18.6). The unanchored prefix match stays as it is: package strings like
+  `15.20-1.pgdg24.04+1` must still pass. 19 is added when it is released.
+
 ## Release 0.14.0
 
 **Features**

@@ -1,4 +1,4 @@
-# up to August 13, 2026: PostgreSQL 18.6, 17.11, 16.15, 15.19, 14.24 and 19 Beta 3 Released!
+# up to November 13, 2026: PostgreSQL 19 RC 2, 18.7, 17.12, 16.16, 15.20 and 14.25 Released!
 # https://www.postgresql.org/docs/release/
 type Bsys::PGVersion =
-  Pattern[/^(1[4-7]\.[0-9]|14\.(2[0-4]|1[0-9])|15\.1[0-9]|16\.1[0-5]|17\.1[0-1]|18\.[0-6])/]
+  Pattern[/^(1[4-7]\.[0-9]|14\.(2[0-5]|1[0-9])|15\.(1[0-9]|20)|16\.1[0-6]|17\.1[0-2]|18\.[0-7])/]
